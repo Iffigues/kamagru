@@ -8,6 +8,8 @@ function create_user($db) {
 		id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 		email VARCHAR(100) NOT NULL UNIQUE,
 		login VARCHAR(50) NOT NULL UNIQUE,
+		cle VARCHAR(32)NOT NULL UNIQUE,
+		active BOOLEAN DEFAULT NULL,
 		password varchar(100) NOT NULL
 	);";
 	$db->exec($user);

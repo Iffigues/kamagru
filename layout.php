@@ -1,3 +1,4 @@
+<?php require_once('./session/user.php'); ?>
 <!DOCTYPE htmll>
   <html>
     <head>
@@ -10,21 +11,15 @@
     <body>
 	<header class="flex-container">
 	 <div><a class="btn-floating btn-large red pulse"><i class="material-icons">Kamagru</i></a></div>
+	<?php if(connected()): ?>
+	<?php else: ?>
 	<div><a class="btn-floating btn-large red pulse"><i class="material-icons">Login</i></a></div>
-	<div><a class="btn-floating btn-large red pulse"><i class="material-icons">Register</i></a></div>
+	<div><a class="btn-floating btn-large red pulse" href="?page=register"><i class="material-icons">Register</i></a></div>
+	<?php endif ?>
   	<div><a class="btn-floating btn-large red pulse"><i  class="material-icons">Gallerie</i></a></div>  
 	</header>
 	<main>
-	<section class="section">
-    <div class="container">
-      <h1 class="title">
-        Hello World
-      </h1>
-      <p class="subtitle">
-        My first website with <strong>Bulma</strong>!
-      </p>
-    </div>
-  </section>
+		<?= $content ?>
 	</main>
 	<footer>
 	</footer>
