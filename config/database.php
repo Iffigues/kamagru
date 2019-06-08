@@ -1,8 +1,20 @@
 <?php
 require_once("./config/setup.php");
 
-function create_db($db) {
-	return false;
+function create_user($db) {
+	try {
+		$user = "
+		CREATE TABLE IF NOT EXISTS user(
+		id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+		email VARCHAR(100) NOT NULL UNIQUE,
+		login VARCHAR(50) NOT NULL UNIQUE,
+		password varchar(100) NOT NULL
+	);";
+	$db->exec($user);
+	} catch (PDOexception $e) {
+		echo $e->getMessage();
+		return false;
+	}
 }
 
 try {
@@ -10,6 +22,7 @@ try {
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$dbh->exec("CREATE DATABASE IF NOT EXISTS kamagru;");
 	$dbh->exec("use kamagru;");
+	create_user($dbh);
 } catch (PDOException $e) {
 	    print "Erreur !: " . $e->getMessage() . "<br/>";
 	        die();
