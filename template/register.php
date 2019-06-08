@@ -7,25 +7,22 @@
     <form class="col s12" action="?page=register" method="POST">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="login" id="first_name" type="text" class="validate">
+          <input placeholder="login" id="first_name" name="login" type="text" class="validate">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+          <input id="password" type="password" class="validate" name="password" placeholder="password">
         </div>
       </div>
 	<div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+          <input id="password" type="password" class="validate" name="password2" placeholder="password">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
+          <input id="email" type="email" class="validate" name="email" placeholder="email">
         </div>
       </div>
 	<div class="row">
