@@ -9,8 +9,7 @@ function activate($db, $cle, $cles, $log) {
 			$stmt = $db->prepare("UPDATE user SET active = 1 WHERE login like :login");
 			$stmt->bindParam(':login', $log);
 			$stmt->execute();
-		} catch (PDOexception $e) {
-		}
+		} catch (PDOexception $e) {}
 	} else {
 		require_once("./template/resend.php");
 	}
@@ -20,11 +19,10 @@ function activate($db, $cle, $cles, $log) {
 function validate($db, $log, $cle) {
 	try {
 		$stmt = $db->prepare("SELECT cle, active FROM user WHERE login = :log");
-		if($stmt->execute(array(':log' => $log)) && $row = $stmt->fetch())
-		{
+		if ($stmt->execute(array(':log' => $log)) && $row = $stmt->fetch()) {
 			$cles = $row['cle'];
 			$active = $row['active'];
-		}else {
+		} else {
 			require_once("./template/register.php");
 			return ;
 		}

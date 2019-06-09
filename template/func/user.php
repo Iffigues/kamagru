@@ -46,6 +46,25 @@ function new_user() {
 		epimail($_POST["email"], $_POST["login"],$cle);
 		db_close($db,$stmt);
 	} catch (PDOexception $e) {
-		echo 'Échec lors de la connexion : ' . $e->getMessage();
 	}
+}
+
+function resend() {
+	$db = conn_db();
+	$user = $_GET['log'];
+	try {
+		$stmt = $db->prepare("SELECT email, active FROM user WHERE login = :log");
+		if ($stmt->execute(array(':log' => $user)) && $row = $stmt->fetch()) {
+			if (!row['active']) {
+				$cle = md5(microtime(TRUE) * 100000);
+				$stmt = $db->prepare("UPDATE user SET cle = :cle WHERE email = :mail");
+				$stmt->bindParam(":cle", $cle);
+				$stmt->bindPAram(":mail", row['email']);
+				$stmt->execute();
+				epimail(row['email'], $user, $cle);
+			} else {
+			}
+		}
+	}
+	db_close($db);
 }
