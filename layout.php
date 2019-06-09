@@ -10,7 +10,7 @@
     </head>
     <body>
 	<header class="flex-container">
-	 <div><a class="btn-floating btn-large red pulse"><i class="material-icons">Kamagru</i></a></div>
+	 <div><a class="btn-floating btn-large red pulse" href="/"><i class="material-icons">Kamagru</i></a></div>
 	<?php if(connected()): ?>
 	<?php else: ?>
 	<div><a class="btn-floating btn-large red pulse"><i class="material-icons">Login</i></a></div>
