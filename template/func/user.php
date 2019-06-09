@@ -19,8 +19,8 @@ ou copier/coller dans votre navigateur internet.<br>
  register</a>
 	Ceci est un mail automatique, Merci de ne pas y répondre";
 	$boundary = "-----=".md5(rand());
-	$sujet = "Hey mon ami !";
-	$header = "From: \"admin\"<admin@gopiko.fr>".$passage_ligne;
+	$sujet = "Registration Kamagru";
+	$header = "From: \"Kamagru\"<admin@gopiko.fr>".$passage_ligne;
 	$header.= "Reply-to: \"WeaponsB\" <$mail>".$passage_ligne;
 	$header.= "MIME-Version: 1.0".$passage_ligne;
 	$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
@@ -65,6 +65,6 @@ function resend() {
 			} else {
 			}
 		}
-	}
+	} catch (PDOexception $e){}
 	db_close($db);
 }
