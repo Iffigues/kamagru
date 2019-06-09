@@ -12,4 +12,8 @@ function conn_db() {
 }
 
 
-
+function db_close(&$a, &...$b) {
+	$a = null;
+	foreach ($b as $k =>$v)
+		$b[$k] = null;
+}

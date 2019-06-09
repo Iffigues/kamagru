@@ -44,6 +44,7 @@ function new_user() {
 		$stmt->bindParam(':cle', $cle);
 		$stmt->execute();
 		epimail($_POST["email"], $_POST["login"],$cle);
+		db_close($db,$stmt);
 	} catch (PDOexception $e) {
 		echo 'Échec lors de la connexion : ' . $e->getMessage();
 	}
