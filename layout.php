@@ -13,7 +13,7 @@
 	 <div><a class="btn-floating btn-large red pulse" href="/"><i class="material-icons">Kamagru</i></a></div>
 	<?php if(connected()): ?>
 	<?php else: ?>
-	<div><a class="btn-floating btn-large red pulse"><i class="material-icons">Login</i></a></div>
+	<div><a class="btn-floating btn-large red pulse" href="?page=login"><i class="material-icons">Login</i></a></div>
 	<div><a class="btn-floating btn-large red pulse" href="?page=register"><i class="material-icons">Register</i></a></div>
 	<?php endif ?>
   	<div><a class="btn-floating btn-large red pulse"><i  class="material-icons">Gallerie</i></a></div>  
