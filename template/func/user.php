@@ -2,6 +2,7 @@
 
 require_once("./config/db.php");
 require_once("./template/func/passwd.php");
+require_once("./template/func/csrf.php");
 
 function epimail($mail, $login, $cle) {
 	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail))
@@ -35,6 +36,7 @@ ou copier/coller dans votre navigateur internet.<br>
 
 function new_user() {
 	$db = conn_db();
+	$e = getToken("register");
 	try {
 		$cle = md5(microtime(TRUE)*100000);
 		$stmt = $db->prepare("INSERT INTO user (email, login,password, cle) VALUES (:email, :login,:password, :cle)");

@@ -1,10 +1,13 @@
+<?php require_once("./template/func/csrf.php");  ?>
 <?php if ($_SERVER['REQUEST_METHOD'] == "POST"): ?>
-<?php require_once("./template/func/user.php"); new_user(); ?>
+<?php require_once("./template/func/user.php");new_user();?>
 <?php endif ?>
 <?php if ($_SERVER['REQUEST_METHOD'] == "GET"): ?>
 	<section>
+	<?php $t =  addToken("register"); ?>
 	<div class="row">
     <form class="col s12" action="?page=register" method="POST">
+    <input type="text" style="display:none;" name="token" value=<?php echo $t;?>>
       <div class="row">
         <div class="input-field col s6">
           <input placeholder="login" id="first_name" name="login" type="text" class="validate">
