@@ -37,18 +37,19 @@ ou copier/coller dans votre navigateur internet.<br>
 function new_user() {
 	$db = conn_db();
 	$e = getToken("register");
-	echo $e;
-	try {
-		$cle = md5(microtime(TRUE)*100000);
-		$stmt = $db->prepare("INSERT INTO user (email, login,password, cle) VALUES (:email, :login,:password, :cle)");
-		$stmt->bindParam(':email', $_POST['email']);
-		$stmt->bindParam(':login', $_POST['login']);
-		$stmt->bindParam(':password', pwd($_POST['password']));
-		$stmt->bindParam(':cle', $cle);
-		$stmt->execute();
-		epimail($_POST["email"], $_POST["login"],$cle);
-		db_close($db,$stmt);
-	} catch (PDOexception $e) {
+	if ($e) {
+		try {
+			$cle = md5(microtime(TRUE)*100000);
+			$stmt = $db->prepare("INSERT INTO user (email, login,password, cle) VALUES (:email, :login,:password, :cle)");
+			$stmt->bindParam(':email', $_POST['email']);
+			$stmt->bindParam(':login', $_POST['login']);
+			$stmt->bindParam(':password', pwd($_POST['password']));
+			$stmt->bindParam(':cle', $cle);
+			$stmt->execute();
+			epimail($_POST["email"], $_POST["login"],$cle);
+			db_close($db,$stmt);
+		} catch (PDOexception $e) {
+		}
 	}
 }
 
