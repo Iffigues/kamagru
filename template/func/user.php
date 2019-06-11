@@ -37,6 +37,7 @@ ou copier/coller dans votre navigateur internet.<br>
 function new_user() {
 	$db = conn_db();
 	$e = getToken("register");
+	echo $e;
 	try {
 		$cle = md5(microtime(TRUE)*100000);
 		$stmt = $db->prepare("INSERT INTO user (email, login,password, cle) VALUES (:email, :login,:password, :cle)");
