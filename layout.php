@@ -12,6 +12,8 @@
 	<header class="flex-container">
 	 <div><a class="btn-floating btn-large red pulse" href="/"><i class="material-icons">Kamagru</i></a></div>
 	<?php if(connected()): ?>
+		<div><a class="btn-floating btn-large red pulse" href="?page=login"><i class="material-icons">Profile</i></a></div>
+	<div><a class="btn-floating btn-large red pulse" href="?page=register"><i class="material-icons">Logout</i></a></div>
 	<?php else: ?>
 	<div><a class="btn-floating btn-large red pulse" href="?page=login"><i class="material-icons">Login</i></a></div>
 	<div><a class="btn-floating btn-large red pulse" href="?page=register"><i class="material-icons">Register</i></a></div>
