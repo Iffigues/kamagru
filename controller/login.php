@@ -3,6 +3,7 @@
 require_once("./config/db.php");
 require_once("./template/func/passwd.php");
 require_once("./template/func/csrf.php");
+require_once("./template/func/ticket.php");
 
 if (!$_SESSION["co"]){
 	if ($_SERVER['REQUEST_METHOD'] == "GET")
@@ -23,6 +24,7 @@ if (!$_SESSION["co"]){
 					if ($active) {
 						if (verif_pwd($pwd, $passwd)) {
 							$_SESSION['co'] = 1;
+							setTicket();
 							require_once("./template/home.php");
 						} else {
 							require_once("./template/login.php");
