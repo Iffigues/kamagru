@@ -3,6 +3,7 @@
 require_once("./config/db.php");
 require_once("./template/func/passwd.php");
 require_once("./template/func/csrf.php");
+require_once('./template/func/email.php');
 
 function epimail($mail, $login, $cle) {
 	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail))
@@ -34,23 +35,38 @@ ou copier/coller dans votre navigateur internet.<br>
 	mail($mail,$sujet,$message,$header);
 }
 
+function good() {
+	return (
+		check_out(
+			[
+				trim($_POST['login']),
+				$_POST['password'],
+				$_POST['password2'],
+				trim($_POST['email'])
+		])
+	);
+}
+
 function new_user() {
 	$db = conn_db();
 	$e = getToken("register");
-	if ($e) {
+	var_dump(good());
+	if (good() && $e) {
 		try {
 			$cle = md5(microtime(TRUE)*100000);
 			$stmt = $db->prepare("INSERT INTO user (email, login,password, cle) VALUES (:email, :login,:password, :cle)");
-			$stmt->bindParam(':email', $_POST['email']);
-			$stmt->bindParam(':login', $_POST['login']);
+			$stmt->bindParam(':email', trim($_POST['email']));
+			$stmt->bindParam(':login', trim($_POST['login']));
 			$stmt->bindParam(':password', pwd($_POST['password']));
 			$stmt->bindParam(':cle', $cle);
 			$stmt->execute();
 			epimail($_POST["email"], $_POST["login"],$cle);
+			return 1;
 			db_close($db,$stmt);
 		} catch (PDOexception $e) {
 		}
 	}
+	return 0;
 }
 
 function resend() {

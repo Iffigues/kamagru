@@ -1,8 +1,10 @@
 <?php require_once("./template/func/csrf.php");  ?>
 <?php if ($_SERVER['REQUEST_METHOD'] == "POST"): ?>
-<?php require_once("./template/func/user.php");new_user();?>
+<?php require_once("./template/func/user.php"); $a = new_user();?>
+<?PHP if($a): ?>
+	un message viens d etre envoyer a votre aadresse mail;
 <?php endif ?>
-<?php if ($_SERVER['REQUEST_METHOD'] == "GET"): ?>
+<?php if ($_SERVER['REQUEST_METHOD'] == "GET" || !$a): ?>
 	<section>
 	<?php $t =  addToken("register"); ?>
 	<div class="row">
