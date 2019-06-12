@@ -1,4 +1,5 @@
 <?php require_once("./template/func/csrf.php");  ?>
+<?php require_once("./template/func/error.php"); ?>
 <?php if ($_SERVER['REQUEST_METHOD'] == "POST"): ?>
 <?php require_once("./template/func/user.php"); $a = new_user();?>
 <?PHP if($a): ?>
