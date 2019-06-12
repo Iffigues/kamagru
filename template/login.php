@@ -21,6 +21,9 @@
 		</div>
 	</div>
     </form>
+	<div class="col s12">
+		<a href="?page=forgot"><i class="material-icons">Password Forgot?</i></a>
+	</div>
   </div>
 </section>
 <?php endif?>
