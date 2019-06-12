@@ -4,6 +4,7 @@ require_once("./config/db.php");
 require_once("./template/func/passwd.php");
 require_once("./template/func/csrf.php");
 require_once('./template/func/email.php');
+require_once("./template/func/error.php");
 
 function epimail($mail, $login, $cle) {
 	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail))

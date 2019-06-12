@@ -1,8 +1,10 @@
 <?php
 
+require_once('./template/func/error.php');
+
 function verif_password($password) {
 		if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}$#', $password))
-					return 1;
+				return 1;
 			return (1);
 }
 
@@ -17,9 +19,13 @@ function verif_email($e) {
 }
 
 function check_out($e) {
-	if (!verif_password($e[1]) || $e[2] != $e[1])
+	if (!verif_password($e[1]) || $e[2] != $e[1]) {
+		setError('register', "verifier que votre mot de passe est bien securiser ou que vous l ayer bien ecrit");
 		return 0;
-	if (!verif_email($e[3]))
+	}
+	if (!verif_email($e[3])) {
+		setError("register", "mail non valide");
 		return 0;
+	}
 	return 1;
 }
