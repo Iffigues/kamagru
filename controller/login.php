@@ -28,11 +28,17 @@ if (!isset($_SESSION['co']) || !$_SESSION["co"]){
 							require_once("./template/login.php");
 						}
 					} else {
+						require_once("./template/login.php");
 					}
+					require_once('./template/login.php');
+				} else {
+					require_once("./template/login.php");
 				}
+			} else {
+				require_once('./template/login.php');
 			}
 		} catch (PDOexception $e){
-			echo $e->getMessage();
+			require_once('./template/login.php');
 		}
 		db_close($db);
 	}

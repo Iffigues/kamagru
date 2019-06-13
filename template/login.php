@@ -1,6 +1,6 @@
 <?php require_once('./template/func/csrf.php'); $t = addToken("login");?>
 <?php if (!isset($_SESSION['co']) || !$_SESSION['co']): ?>
-<?php if ($_SERVER['REQUEST_METHOD'] == "GET"): ?>
+<?php if ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST"): ?>
 <section>
 	<div class="row">
     <form class="col s12" action="?page=login" method="POST">

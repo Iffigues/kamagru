@@ -13,7 +13,6 @@ function record($a, $b, $c) {
 			$stmt->execute();
 			return 1;
 		} catch (PDOexception $e){
-			echo $e->getMessage();
 		}
 	}
 	return 0;
