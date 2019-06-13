@@ -3,7 +3,7 @@
 <section>
 	<div class="row">
     <form class="col s12" action="?page=recover" method="POST">
-	<input name="token" style="display:none;" type="text" value=<?php echo $_GET['cle']; ?>>
+	<input name="cle" style="display:none;" type="text" value=<?php echo $_GET['cle']; ?>>
       <div class="row">
         <div class="input-field col s12">
           <input id="email" type="password" name="password" class="validate">
