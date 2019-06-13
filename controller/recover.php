@@ -3,6 +3,15 @@
 require_once('./config/db.php');
 require_once('./template/func/passwd.php');
 
+function erase($db, $m) {
+	try {
+		$stmt = $db->prepare("DELETE FROM forgot WHERE email = :mail");
+		$stmt->bindParam(":mail", $m);
+		$stmt->execute();
+	} catch (PDOexception $e) {
+	}
+}
+
 function record($a, $b, $c) {
 	$db = conn_db();
 	if ($a == $b) {
@@ -11,6 +20,7 @@ function record($a, $b, $c) {
 			$stmt->bindParam(':pwd', pwd($a));
 			$stmt->bindParam(':email', $c);
 			$stmt->execute();
+			erase($db, $c);
 			return 1;
 		} catch (PDOexception $e){
 		}
