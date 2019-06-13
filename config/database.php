@@ -24,9 +24,9 @@ function create_forgot($db) {
 		$forgot = "
 		CREATE TABLE IF NOT EXISTS forgot(
 		email VARCHAR(100) NOT NULL UNIQUE,
-		cle VARCHAR(32) NOY NULL UNIQUE
-	);";
-	$db-exec($forgot);
+		cle VARCHAR(32) NOT NULL UNIQUE
+		);";
+		$db->exec($forgot);
 	} catch (PDOexception $e) {
 		echo $e->getMessage();
 	}
@@ -38,6 +38,7 @@ try {
 	$dbh->exec("CREATE DATABASE IF NOT EXISTS kamagru;");
 	$dbh->exec("use kamagru;");
 	create_user($dbh);
+	create_forgot($dbh);
 } catch (PDOException $e) {
 	    print "Erreur !: " . $e->getMessage() . "<br/>";
 	        die();
