@@ -1,11 +1,9 @@
 <?php
-
 require_once("./config/db.php");
 require_once("./template/func/passwd.php");
 require_once("./template/func/csrf.php");
 require_once("./template/func/ticket.php");
-
-if (!$_SESSION["co"]){
+if (!isset($_SESSION['co']) || !$_SESSION["co"]){
 	if ($_SERVER['REQUEST_METHOD'] == "GET")
 		require_once("./template/login.php");
 	if ($_SERVER['REQUEST_METHOD'] == "POST") {

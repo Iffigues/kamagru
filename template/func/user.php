@@ -51,7 +51,6 @@ function good() {
 function new_user() {
 	$db = conn_db();
 	$e = getToken("register");
-	var_dump(good());
 	if (good() && $e) {
 		try {
 			$cle = md5(microtime(TRUE)*100000);

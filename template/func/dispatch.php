@@ -1,7 +1,7 @@
 <?php
 
 function dispatch($e) {
-	if ($_SESSION['co']) {
+	if (isset($_SESSION['co']) && $_SESSION['co']) {
 		require_once("./template/func/ticket.php");
 		if (getTicket())
 			require_once("./controller/$e");
