@@ -19,6 +19,19 @@ function create_user($db) {
 	}
 }
 
+function create_forgot($db) {
+	try {
+		$forgot = "
+		CREATE TABLE IF NOT EXISTS forgot(
+		email VARCHAR(100) NOT NULL UNIQUE,
+		cle VARCHAR(32) NOY NULL UNIQUE
+	);";
+	$db-exec($forgot);
+	} catch (PDOexception $e) {
+		echo $e->getMessage();
+	}
+}
+	
 try {
 	$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $options);
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
