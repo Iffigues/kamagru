@@ -39,7 +39,7 @@ if ($_SESSION['co']) {
 		$a = $_GET["action"];
 		if ($a == "pwd")
 			request($_POST['pwd'], $_POST['pwd1'], $_POST['pwd2']);
-		if ($a == "email")
+		if ($a == "email")"UPDATE user SET password = :login WHERE login like :haha", $_POST['email'], $_POST['email1']);
 			changeme(conn_db(), );
 		if ($a == "login")
 		;
