@@ -22,6 +22,7 @@ if (!isset($_SESSION['co']) || !$_SESSION["co"]){
 					if ($active) {
 						if (verif_pwd($pwd, $passwd)) {
 							$_SESSION['co'] = 1;
+							$_SESSION['login'] = $row['login'];
 							setTicket();
 							require_once("./template/home.php");
 						} else {
