@@ -15,6 +15,7 @@
 	<?php if(connected()): ?>
 		<div><a class="btn-floating btn-large red pulse" href="?page=profile"><i class="material-icons">Profile</i></a></div>
 		<div><a class="btn-floating btn-large red pulse" href=<?php echo "?page=logout&token=".addToken('logout') ?>><i class="material-icons">Logout</i></a></div>
+		<div><a class="btn-floating btn-large red pulse" href="?page=image"><i class="material-icons">Image</i></a></div>
 	<?php else: ?>
 	<div><a class="btn-floating btn-large red pulse" href="?page=login"><i class="material-icons">Login</i></a></div>
 	<div><a class="btn-floating btn-large red pulse" href="?page=register"><i class="material-icons">Register</i></a></div>

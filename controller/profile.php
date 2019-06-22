@@ -22,7 +22,8 @@ function request($b, $c, $d) {
 		$row = $stmt->fetch();
 		if ($row) {
 			if (verif_pwd($b, $row['password']))
-				changeme($db, "UPDATE user SET password = :login WHERE login like :haha", pwd($c), $_SESSION['login']);
+				if ($c == $d)
+					changeme($db, "UPDATE user SET password = :login WHERE login like :haha", pwd($c), $_SESSION['login']);
 		}
 	} catch  (PDOexception $e) {
 	}
@@ -34,7 +35,7 @@ if ($_SESSION['co']) {
 		if ($a == "pwd")
 			request($_POST['pwd'], $_POST['pwd1'], $_POST['pwd2']);
 		if ($a == "email")
-			changeme(conn_db(), "UPDATE user SET email = :login WHERE login like :haha", $_POST['email1'], $_POST['email']);
+			changeme(conn_db(), "UPDATE user SET email = :login WHERE login like :haha", $_POST['email1'], $_SESSION['login']);
 		if ($a == "login")
 			changeme(conn_db(), "UPDATE user SET login = :login WHERE login like :haha", $_POST['login1'], $_POST['login']);
 	}
