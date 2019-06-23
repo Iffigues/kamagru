@@ -1,86 +1,14 @@
-<device type="media" onchange="update(this.data)"></device>
-<video autoplay></video>
-<script>
-function update(stream) {
-	document.querySelector('video').src = stream.url;
-}
-navigator.getMedia = ( navigator.getUserMedia ||
-	navigator.webkitGetUserMedia ||
-	navigator.mozGetUserMedia ||
-	navigator.msGetUserMedia);
-function hasGetUserMedia() {
-	return !!(navigator.mediaDevices &&
-		navigator.mediaDevices.getUserMedia);
-}
-
-if (hasGetUserMedia()) {
-	alert("Good to go!")
-} else {
-	alert('getUserMedia() is not supported by your browser');
-}
-const constraints = {
-video: true
-};
-
-const video = document.querySelector('video');
-
-navigator.mediaDevices.getUserMedia(constraints).
-	then((stream) => {video.srcObject = stream});
-const videoElement = document.querySelector('video');
-const audioSelect = document.querySelector('select#audioSource');
-const videoSelect = document.querySelector('select#videoSource');
-
-navigator.mediaDevices.enumerateDevices()
-	.then(gotDevices).then(getStream).catch(handleError);
-
-audioSelect.onchange = getStream;
-videoSelect.onchange = getStream;
-
-function gotDevices(deviceInfos) {
-	for (let i = 0; i !== deviceInfos.length; ++i) {
-		const deviceInfo = deviceInfos[i];
-		const option = document.createElement('option');
-		option.value = deviceInfo.deviceId;
-		if (deviceInfo.kind === 'audioinput') {
-			option.text = deviceInfo.label ||
-				'microphone ' + (audioSelect.length + 1);
-			audioSelect.appendChild(option);
-		} else if (deviceInfo.kind === 'videoinput') {
-			option.text = deviceInfo.label || 'camera ' +
-				(videoSelect.length + 1);
-			videoSelect.appendChild(option);
-		} else {
-			console.log('Found another kind of device: ', deviceInfo);
-		}
-	}
-}
-
-function getStream() {
-	if (window.stream) {
-		window.stream.getTracks().forEach(function(track) {
-			track.stop();
-		});
-	}
-
-	const constraints = {
-	audio: {
-	deviceId: {exact: audioSelect.value}
-	},
-		video: {
-		deviceId: {exact: videoSelect.value}
-	}
-	};
-
-	navigator.mediaDevices.getUserMedia(constraints).
-		then(gotStream).catch(handleError);
-}
-
-function gotStream(stream) {
-	window.stream = stream; // make stream available to console
-	videoElement.srcObject = stream;
-}
-
-function handleError(error) {
-	console.error('Error: ', error);
-}
-</script>
+<div class="container">
+	<device type="media" onchange="update(this.data)"></device>
+	<div class="row">
+			<video  class="responsive-video col s12" style="padding:0px;margin:0px;" id="video" autoplay></video>
+			<canvas class="col s12 responsive-video" style="padding:0px;margin:0px"id="canvas"></canvas>
+	</div>
+	<div class="row">
+		<div class="col s12" id="elem"></div>
+		<div class="col s12"></div>
+		<button class="col s12">Take</button>
+	</div>
+</div>
+<script type="text/javascript" src="./asset/js/video.js"></script>
+<script type="text/javascript" src="./asset/js/scale.js"></script>

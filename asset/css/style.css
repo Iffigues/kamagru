@@ -35,6 +35,28 @@ header > div {
 	 filter: blur(0.007em);	
 }
 
+.hh, #hh {
+	margin: 0px;
+	height: auto;
+	height: auto;
+	padding: 0px;
+	display: inline-block;
+	 z-index: 2;
+}
+
+.lol, #lol {
+	width: auto;
+	height: auto;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	z-index: -1;
+}
+
+.icone {
+	background-color: black;
+}
+
 #top {
 	background-color:orange;
 }
