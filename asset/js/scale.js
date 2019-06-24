@@ -11,5 +11,8 @@
 	fn();
 	video.onresize = fn();
 	window.addEventListener('load', fn, false);
-	window.addEventListener("DOMContentLoaded", (event) => {fn();});
+	window.addEventListener("DOMContentLoaded", (event) => {
+		setTimeout(fn,1000);
+	});
+	video.addEventListener('canplay', function(ev){fn();},false);
 })();

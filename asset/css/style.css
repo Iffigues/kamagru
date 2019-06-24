@@ -32,25 +32,21 @@ header > div {
 	        font-size: 30px;
 	 	 background-color: black;
 	border-radius: 3px;
-	 filter: blur(0.007em);	
 }
 
-.hh, #hh {
-	margin: 0px;
-	height: auto;
-	height: auto;
-	padding: 0px;
-	display: inline-block;
-	 z-index: 2;
-}
-
-.lol, #lol {
-	width: auto;
-	height: auto;
+.video {
 	margin: 0px;
 	padding: 0px;
+	position: absolute;
 	display: inline-block;
 	z-index: -1;
+}
+
+.canvas {
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+        z-index: 3;
 }
 
 .icone {
