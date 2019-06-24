@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col s12" id="elem"></div>
 		<div class="col s12"></div>
-		<button class="col s12">Take</button>
+		<button class="col s12" id="startbutton">Take</button>
 	</div>
 </div>
 <script type="text/javascript" src="./asset/js/video.js"></script>
