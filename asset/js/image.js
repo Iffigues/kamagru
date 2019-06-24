@@ -20,14 +20,16 @@ function set(e) {
 	e.image.id = id;
 	e.image.className = classs;
 	document.getElementById("elem").appendChild(e.image);	
+	bb();
 }
 
 
 function bb() {
-
+	var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	for (var i = 0; i < b.length; i++) {
-
+		ctx.drawImage(b[i].image, b[i].x, b[i].y, b[i].width, b[i].height);
 	}
 }
 
@@ -43,8 +45,6 @@ function change() {
 	tt.x = 0;
 	tt.y = 0;
 	tt.id = this.id;
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.drawImage(tt.image, tt.x, tt.y, tt.width, tt.height);
 	set(tt);
 }
 for (var i = 0; i < img.length; i++) {
