@@ -6,7 +6,36 @@
 	</div>
 	<div class="row">
 		<div class="col s12" id="elem"></div>
-		<div class="col s12"></div>
+		<div class="col row">
+			<div class="row">
+				<div class="col s1">
+					<img class="responsive-img" src="./asset/img/icone/barbarian.png">
+				</div>
+			</div>
+			<div class="row">
+			<div class="col s1">
+				<img class="responsive-img" src="./asset/img/icone/dark_cultist.png">
+			</div>
+			<div class="col s1">	
+				<img class="responsive-img" src="./asset/img/icone/dune_thresher.png">
+			</div>
+			<div class="col s1">
+				<img class="responsive-img" src="./asset/img/icone/gnarled_walker.png">
+			</div>
+			<div class="col s1">	
+				<img class="responsive-img" src="./asset/img/icone/khazra.png">	
+			</div>
+			<div class="col s1">				
+				<img class="responsive-img" src="./asset/img/icone/undead.png">
+			</div>
+			</div>
+			<div class="col s1">
+				<img class="responsive-img" src="./asset/img/icone/witch_doctor.png">
+			</div>
+			<div class="col s1">
+				<img class="responsive-img" src="./asset/img/icone/wizard.png">	
+			</div>
+		</div>
 		<button class="col s12" id="startbutton">Take</button>
 	</div>
 </div>
