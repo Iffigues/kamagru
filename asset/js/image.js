@@ -4,10 +4,10 @@ var c = {};
 
 function getid() {
 	var i = 0;
-	var id = document.getElementsByClassName("icone");
+	var id = b;
 	for (var y = 0; y < id.length; y++) {
-		if (i <= parseInt(id[y].id))
-			i = parseInt(id[y].id);
+		if (i <= parseInt(id[y].image.id))
+			i = parseInt(id[y].image.id);
 	}
 	i++;
 	return (i.toString());
@@ -28,6 +28,43 @@ function rr(ii) {
 					b[i] = b[i + 1];
 					b[i + 1] = c;
 				}
+			}
+			return;
+		}
+	}
+}
+
+function copy() {
+	var tt = {};
+	tt.image = new Image();
+	tt.image.src = c.image.src;
+	tt.width = c.width;
+	tt.height = c.height;
+	tt.x = 0;
+	tt.y = 0;
+	tt.id = c.id;
+	set(tt);
+}
+
+function delone(e, id) {
+	for (var i = 0; i < e.length; i++) {
+		if (e[i].id == id) {
+			e[i].remove();
+			return;
+		}
+	}
+}
+
+function del() {
+	var id = c.image.id;
+	for (var i = 0; i < b.length; i++) {
+		if (id == b[i].image.id) {
+			b.splice(i, 1);
+			delone(document.getElementsByClassName("icone"), id);
+			if (i > 0)
+				c = b[i - 1];
+			else if (i < b.length){
+				c = b[i + 1];
 			}
 			return;
 		}
@@ -75,17 +112,29 @@ function binding(event) {
 		c.x = c.x + 1;
 		bb();
 	}
-
+	if (event.key == "8") {
+		copy();
+		bb();
+	}
+	if (event.key == "Clear") {
+		del();
+		bb();
+	}
+	if (event.key == "0") {
+		alert(event.key);
+	}
 }
 
 function set(e) {
-	b.push(e);
 	var id = getid();
+	alert(id);
 	var classs = "responsive-img img icone col s2 "+e.id;
 	e.image.id = id;
 	e.image.className = classs;
 	e.image.addEventListener('click', event => {c = e});
 	document.getElementById("elem").appendChild(e.image);
+	b.push(e);
+	c = e;
 	bb();
 }
 
@@ -101,8 +150,6 @@ function bb() {
 function change() {
 	var tt = {};
 	var tb = ["","barbarian.png","witch_doctor.png","wizard.png","dark_cultist.png", "dune_thresher.png","gnarled_walker.png","khazra.png","undead.png"];
-	var canvas = document.getElementById("canvas");
-	var ctx = canvas.getContext("2d");
 	tt.image = new Image();
 	tt.image.src = "./asset/img/icone/"+tb[parseInt(this.id)];
 	tt.width = tt.image.width;
@@ -110,7 +157,6 @@ function change() {
 	tt.x = 0;
 	tt.y = 0;
 	tt.id = this.id;
-	c = tt;
 	set(tt);
 }
 for (var i = 0; i < img.length; i++) {
