@@ -40,8 +40,8 @@ function copy() {
 	tt.image.src = c.image.src;
 	tt.width = c.width;
 	tt.height = c.height;
-	tt.x = 0;
-	tt.y = 0;
+	tt.x = c.x;
+	tt.y = c.y;
 	tt.id = c.id;
 	set(tt);
 }
@@ -127,7 +127,6 @@ function binding(event) {
 
 function set(e) {
 	var id = getid();
-	alert(id);
 	var classs = "responsive-img img icone col s2 "+e.id;
 	e.image.id = id;
 	e.image.className = classs;
