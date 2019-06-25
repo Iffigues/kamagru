@@ -36,7 +36,7 @@
 				</div>
 			</div>
 		</div>
-		<button class="col s12" id="startbutton">Take</button>
+		<input type="file"  accept="image/*"  class="col s3" id="load"></input>
 	</div>
 </div>
 <script type="text/javascript" src="./asset/js/image.js"></script>

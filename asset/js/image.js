@@ -1,6 +1,7 @@
 var img = document.getElementsByClassName("img");
 var b = [];
 var c = {};
+var imgs;
 
 function getid() {
 	var i = 0;
@@ -71,6 +72,16 @@ function del() {
 	}
 }
 
+function take() {
+	 var video = document.getElementById('video');
+	  var  canvas = document.getElementById('canvas');
+	var context = canvas.getContext('2d');
+	console.log(video);
+	console.log(canvas);
+	context.drawImage(video, 0, 0, 100, 100);
+	bb();
+}
+
 function binding(event) {
 	if (event.key == "-") {
 		rr('-');
@@ -121,7 +132,7 @@ function binding(event) {
 		bb();
 	}
 	if (event.key == "0") {
-		alert(event.key);
+		take();
 	}
 }
 
@@ -141,6 +152,10 @@ function bb() {
 	var canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext("2d");
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	if (imgs) {
+		console.log('fd');
+		ctx.drawImage(imgs,0,0);
+	}
 	for (var i = 0; i < b.length; i++) {
 		ctx.drawImage(b[i].image, b[i].x, b[i].y, b[i].width, b[i].height);
 	}
@@ -162,4 +177,19 @@ for (var i = 0; i < img.length; i++) {
 	  img[i].addEventListener("click", change, false);
 }
 
+function pic() {
+	var canvas = document.getElementById("canvas");
+	var reader = new FileReader();
+	reader.readAsDataURL(this.files[0]); 
+	reader.onload = function(event){;
+		document.getElementById('video').style.display = 'none';
+		imgs = new Image();
+		imgs.src = reader.result;
+		canvas.width = imgs.width;
+		canvas.height = imgs.height;
+		bb();
+	}
+}
+
+document.getElementById('load').addEventListener('change',pic, false);
 document.addEventListener('keydown', (event) => {binding(event)}, false);
