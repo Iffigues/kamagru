@@ -3,6 +3,7 @@ html {
 }
 
 body {
+	overflow: visible;
 	font-family: 'Charm';
 	min-height: 100%;
 	height: 100%;
