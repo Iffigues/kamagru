@@ -36,7 +36,11 @@
 				</div>
 			</div>
 		</div>
-		<input type="file"  accept="image/*"  class="col s3" id="load"></input>
+
+		<div class="row">
+			<div class="col s3"><input type="file"  accept="image/*" id="load"></input></div>
+			<button class="col s3" id="delete"  style="display:none">Delete</button>
+		</div>
 	</div>
 </div>
 <script type="text/javascript" src="./asset/js/image.js"></script>

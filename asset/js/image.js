@@ -73,8 +73,8 @@ function del() {
 }
 
 function take() {
-	 var video = document.getElementById('video');
-	  var  canvas = document.getElementById('canvas');
+	var video = document.getElementById('video');
+	var  canvas = document.getElementById('canvas');
 	var context = canvas.getContext('2d');
 	console.log(video);
 	console.log(canvas);
@@ -174,7 +174,7 @@ function change() {
 	set(tt);
 }
 for (var i = 0; i < img.length; i++) {
-	  img[i].addEventListener("click", change, false);
+	img[i].addEventListener("click", change, false);
 }
 
 function pic() {
@@ -183,6 +183,7 @@ function pic() {
 	reader.readAsDataURL(this.files[0]); 
 	reader.onload = function(event){;
 		document.getElementById('video').style.display = 'none';
+		document.getElementById('delete').style.display = 'block';
 		imgs = new Image();
 		imgs.src = reader.result;
 		canvas.width = imgs.width;
@@ -191,5 +192,18 @@ function pic() {
 	}
 }
 
+function elf() {
+	imgs = null;
+	var video = document.getElementById('video');
+	video.style.display = 'inline-block';
+	document.getElementById('delete').style.display = 'none';
+	var canvas = document.getElementById('canvas');
+	var width = video.videoWidth;
+	var height = video.videoHeight;
+	canvas.width = video.videoWidth;
+	canvas.height = video.videoHeight;
+}
+
+document.getElementById('delete').addEventListener('click', elf, false);
 document.getElementById('load').addEventListener('change',pic, false);
 document.addEventListener('keydown', (event) => {binding(event)}, false);
