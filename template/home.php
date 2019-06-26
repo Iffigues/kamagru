@@ -4,6 +4,11 @@
 			<video  class="responsive-video col s12" style="padding:0px;margin:0px;z-index:-1;position:absolute;left:0px;width:auto,height:auto" id="video" autoplay></video>
 			<canvas class="col s12 responsive-video" style="padding:0px;margin:0px;z-index:3;" id="canvas"></canvas>
 	</div>
+	<div class="row" id="nop" style="display:none;z-index:10;height:100%;width:100%;position:fixed;top:0px;left:0px;">
+		<img id="ii"></img>
+		<button id="pf">Take</button>
+		<button id="sf">Suprimer</button>
+	</div>
 	<div class="row">
 		<div class="col s12" id="elem"></div>
 		<div class="row" style="background-color:black">

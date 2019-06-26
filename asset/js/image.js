@@ -74,12 +74,23 @@ function del() {
 }
 
 function take() {
-	var myOnlineCamera    = document.getElementById('my'),
-	video            = document.getElementById('video'),
-	canvas            = document.getElementById('canvas');
+	var img = new Image();
+	var imj = document.getElementById("ii");
+	var	myOnlineCamera	= document.getElementById('my'),
+		video		= document.getElementById('video'),
+		canvas		= document.getElementById('canvas'),
+		pop		= document.getElementById("nop");
+	
 	var context = canvas.getContext('2d');
-	context.drawImage(video, 0, 0);
-	//bb();
+	if (imgs)
+		context.drawImage(imgs, 0, 0);
+	else
+		context.drawImage(video,0,0);
+	img.src = canvas.toDataURL("image/png");	
+	pop.style.display  = "block";
+	vv();
+	imj.src = canvas.toDataURL("image/png");
+
 }
 
 function binding(event) {
@@ -161,6 +172,13 @@ function set(e) {
 	bb();
 }
 
+function vv() {
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	for (var i = 0; i < b.length; i++)
+		ctx.drawImage(b[i].image, b[i].x, b[i].y,b[i].width, b[i].height);
+}
+
 function bb() {
 	var canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext("2d");
@@ -218,6 +236,7 @@ function elf() {
 	document.getElementById("load").value = "";
 	bb();
 }
+
 
 document.getElementById('delete').addEventListener('click', elf, false);
 document.getElementById('load').addEventListener('change',pic, false);
