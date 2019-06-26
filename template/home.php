@@ -1,6 +1,6 @@
 <div class="container">
 	<device type="media" onchange="update(this.data)"></device>
-	<div class="row" style="position:relative">
+	 <div id="my" class="row" style="position:relative">
 			<video  class="responsive-video col s12" style="padding:0px;margin:0px;z-index:-1;position:absolute;left:0px;width:auto,height:auto" id="video" autoplay></video>
 			<canvas class="col s12 responsive-video" style="padding:0px;margin:0px;z-index:3;" id="canvas"></canvas>
 	</div>

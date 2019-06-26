@@ -2,6 +2,7 @@ var img = document.getElementsByClassName("img");
 var b = [];
 var c = {};
 var imgs;
+var vit = 1;
 
 function getid() {
 	var i = 0;
@@ -73,16 +74,28 @@ function del() {
 }
 
 function take() {
-	var video = document.getElementById('video');
-	var  canvas = document.getElementById('canvas');
+	var myOnlineCamera    = document.getElementById('my'),
+	video            = document.getElementById('video'),
+	canvas            = document.getElementById('canvas');
 	var context = canvas.getContext('2d');
-	console.log(video);
-	console.log(canvas);
-	context.drawImage(video, 0, 0, 100, 100);
-	bb();
+	context.drawImage(video, 0, 0);
+	//bb();
 }
 
 function binding(event) {
+	if (event.key == "=") {
+		c.x = 0;
+		c.y = 0;
+		bb();
+	}
+	if (event.key == "*") {
+		if (vit < 50)
+			vit = vit + 1;
+	}
+	if (event.key  == "/") {
+		if (vit > 1 )
+			vit = vit - 1;
+	}
 	if (event.key == "-") {
 		rr('-');
 		bb();
@@ -92,35 +105,35 @@ function binding(event) {
 		bb();
 	}
 	if (event.key == "9") {
-		c.height = c.height + 1;
+		c.height = c.height + vit;
 		bb();
 	}
 	if (event.key == "7") {
-		c.width = c.width + 1;
+		c.width = c.width + vit;
 		bb();
 	}
 	if (event.key == "4") {
-		c.width = c.width - 1;
+		c.width = c.width - vit;
 		bb();
 	}
 	if (event.key == "6") {
-		c.height = c.height - 1;
+		c.height = c.height - vit;
 		bb();
 	}
 	if (event.key == "5") {
-		c.y = c.y - 1; 
+		c.y = c.y - vit; 
 		bb();
 	}
 	if (event.key == "2") {
-		c.y = c.y + 1;
+		c.y = c.y + vit;
 		bb();
 	}
 	if (event.key == "1") {
-		c.x = c.x - 1;
+		c.x = c.x - vit;
 		bb();
 	}
 	if (event.key == "3") {
-		c.x = c.x + 1;
+		c.x = c.x + vit;
 		bb();
 	}
 	if (event.key == "8") {
@@ -202,6 +215,8 @@ function elf() {
 	var height = video.videoHeight;
 	canvas.width = video.videoWidth;
 	canvas.height = video.videoHeight;
+	document.getElementById("load").value = "";
+	bb();
 }
 
 document.getElementById('delete').addEventListener('click', elf, false);
