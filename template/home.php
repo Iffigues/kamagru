@@ -5,7 +5,7 @@
 			<canvas class="col s12 responsive-video" style="padding:0px;margin:0px;z-index:3;" id="canvas"></canvas>
 	</div>
 	<div class="row" id="nop" style="display:none;z-index:10;height:100%;width:100%;position:fixed;top:0px;left:0px;">
-		<img id="ii"></img>
+		<img id="ii" class="respojnsive-img"></img>
 		<button id="pf">Take</button>
 		<button id="sf">Suprimer</button>
 	</div>
@@ -48,6 +48,7 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="./asset/js/ajax.js"></script>
 <script type="text/javascript" src="./asset/js/image.js"></script>
 <script type="text/javascript" src="./asset/js/video.js"></script>
 <script type="text/javascript" src="./asset/js/scale.js"></script>

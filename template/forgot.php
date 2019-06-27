@@ -1,5 +1,5 @@
 <?php require_once('./template/func/csrf.php'); $t = addToken("forgot");?>
-<?php if (!$_SESSION['co']): ?>
+<?php if (!isset($_SESSION['co']) || !$_SESSION['co']): ?>
 <?php if ($_SERVER['REQUEST_METHOD'] == "GET"): ?>
 <section>
 	<div class="row">

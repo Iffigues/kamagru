@@ -65,9 +65,8 @@ function del() {
 			delone(document.getElementsByClassName("icone"), id);
 			if (i > 0)
 				c = b[i - 1];
-			else if (i < b.length){
+			else if (i < b.length)
 				c = b[i + 1];
-			}
 			return;
 		}
 	}
@@ -90,6 +89,13 @@ function take() {
 	pop.style.display  = "block";
 	vv();
 	imj.src = canvas.toDataURL("image/png");
+	document.getElementById('pf').addEventListener("click", function() {
+		var obj = {};
+		obj.img = imj.src;
+		obj.icone = b;
+		sender(obj, "https://gopiko.fr?page=img", null);
+		
+	}, false);
 
 }
 
@@ -224,7 +230,7 @@ function pic() {
 }
 
 function elf() {
-	imgs = null;
+	imgs = 0;
 	var video = document.getElementById('video');
 	video.style.display = 'inline-block';
 	document.getElementById('delete').style.display = 'none';
@@ -241,3 +247,8 @@ function elf() {
 document.getElementById('delete').addEventListener('click', elf, false);
 document.getElementById('load').addEventListener('change',pic, false);
 document.addEventListener('keydown', (event) => {binding(event)}, false);
+document.getElementById("sf").addEventListener('click',function(){
+	document.getElementById('nop').querySelector('img').src = '';
+	document.getElementById('nop').style.display = 'none';
+	bb();
+},false);
