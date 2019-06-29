@@ -8,12 +8,12 @@ function xml() {
 function sender (e, url, b) {
 	var t = xml();
 	t.onreadystatechange = function(ii,oo,bb) {
-		if (t.readyState>3 && t.status==200) {
-			console.log(t.responseText);
+		if (t.readyState>3 && t.status==202) {
+			console.log(t.status);
 			console.log(this.responseText);
 		}
 	};
 	t.open("POST", url, true);
 	t.setRequestHeader("Content-Type", "application/json");
-	t.send(JSON.stringify({name:"John Rambo", time:"2pm"}));
+	t.send(e);
 }

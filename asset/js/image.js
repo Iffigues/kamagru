@@ -79,7 +79,7 @@ function take() {
 		video		= document.getElementById('video'),
 		canvas		= document.getElementById('canvas'),
 		pop		= document.getElementById("nop");
-	
+
 	var context = canvas.getContext('2d');
 	if (imgs)
 		context.drawImage(imgs, 0, 0);
@@ -89,13 +89,6 @@ function take() {
 	pop.style.display  = "block";
 	vv();
 	imj.src = canvas.toDataURL("image/png");
-	document.getElementById('pf').addEventListener("click", function() {
-		var obj = {};
-		obj.img = imj.src;
-		obj.icone = b;
-		sender(JSON.stringify(obj), "https://gopiko.fr/api/img.php", null);	
-	}, false);
-
 }
 
 function binding(event) {
@@ -251,3 +244,10 @@ document.getElementById("sf").addEventListener('click',function(){
 	document.getElementById('nop').style.display = 'none';
 	bb();
 },false);
+document.getElementById('pf').addEventListener("click", function() {
+	var imj = document.getElementById("ii");
+	var obj = {};
+	obj.img = imj.src;
+	obj.icone = b;
+	sender(JSON.stringify(obj), "https://gopiko.fr/api/img.php", null);	
+}, false);
