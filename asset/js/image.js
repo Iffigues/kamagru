@@ -93,8 +93,7 @@ function take() {
 		var obj = {};
 		obj.img = imj.src;
 		obj.icone = b;
-		sender(obj, "https://gopiko.fr?page=img", null);
-		
+		sender(JSON.stringify(obj), "https://gopiko.fr/api/img.php", null);	
 	}, false);
 
 }
