@@ -19,6 +19,21 @@ function create_user($db) {
 	}
 }
 
+function create_photo($db) {
+	try {
+		$photo = "
+		CREATE TABLE IF NOT EXISTS photo(
+			id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+			id_user INT,
+			path VARCHAR(100) NOT NULL UNIQUE,
+			FOREIGN KEY (id_user) REFERENCES user(id)
+			);";
+		$db->exec($photo);
+	} catch (PDOexception $e) {
+		echo $e->getMessage();
+	}
+}
+
 function create_forgot($db) {
 	try {
 		$forgot = "
@@ -31,7 +46,7 @@ function create_forgot($db) {
 		echo $e->getMessage();
 	}
 }
-	
+
 try {
 	$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $options);
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -39,6 +54,7 @@ try {
 	$dbh->exec("use kamagru;");
 	create_user($dbh);
 	create_forgot($dbh);
+	create_photo($dbh);
 } catch (PDOException $e) {
 	    print "Erreur !: " . $e->getMessage() . "<br/>";
 	        die();

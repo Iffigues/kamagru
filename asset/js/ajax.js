@@ -8,9 +8,9 @@ function xml() {
 function sender (e, url, b) {
 	var t = xml();
 	t.onreadystatechange = function(ii,oo,bb) {
-		if (t.readyState>3 && t.status==202) {
+		if (t.readyState>3 /*$&& t.status==204*/) {
 			console.log(t.status);
-			console.log(this.responseText);
+			console.log(t.responseText);
 		}
 	};
 	t.open("POST", url, true);

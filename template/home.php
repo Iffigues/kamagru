@@ -5,9 +5,9 @@
 			<canvas class="col s12 responsive-video" style="padding:0px;margin:0px;z-index:3;" id="canvas"></canvas>
 	</div>
 	<div class="row" id="nop" style="display:none;z-index:10;height:100%;width:100%;position:fixed;top:0px;left:0px;">
-		<img id="ii" class="respojnsive-img"></img>
-		<button id="pf">Take</button>
-		<button id="sf">Suprimer</button>
+		<img id="ii" class="responsive-img col s12"></img>
+		<button id="pf" class="col s12" style="z-index:10">Take</button>
+		<button id="sf" class="col s12">Suprimer</button>
 	</div>
 	<div class="row">
 		<div class="col s12" id="elem"></div>

@@ -2,6 +2,7 @@ var img = document.getElementsByClassName("img");
 var b = [];
 var c = {};
 var imgs;
+var fish;
 var vit = 1;
 
 function getid() {
@@ -85,13 +86,16 @@ function take() {
 		context.drawImage(imgs, 0, 0);
 	else
 		context.drawImage(video,0,0);
-	img.src = canvas.toDataURL("image/png");	
+	img.src = canvas.toDataURL("image/png");
+	fich = img.src;
 	pop.style.display  = "block";
 	vv();
 	imj.src = canvas.toDataURL("image/png");
 }
 
 function binding(event) {
+	if (document.getElementById('nop').style.display != 'none')
+		return ;
 	if (event.key == "=") {
 		c.x = 0;
 		c.y = 0;
@@ -181,13 +185,10 @@ function bb() {
 	var canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext("2d");
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	if (imgs) {
-		console.log('fd');
+	if (imgs)
 		ctx.drawImage(imgs,0,0);
-	}
-	for (var i = 0; i < b.length; i++) {
+	for (var i = 0; i < b.length; i++)
 		ctx.drawImage(b[i].image, b[i].x, b[i].y, b[i].width, b[i].height);
-	}
 }
 
 function change() {
@@ -196,6 +197,7 @@ function change() {
 	tt.image = new Image();
 	tt.image.src = "./asset/img/icone/"+tb[parseInt(this.id)];
 	tt.width = tt.image.width;
+	tt.nb = parseInt(this.id);
 	tt.height = tt.image.height;
 	tt.x = 0;
 	tt.y = 0;
@@ -244,10 +246,10 @@ document.getElementById("sf").addEventListener('click',function(){
 	document.getElementById('nop').style.display = 'none';
 	bb();
 },false);
+
 document.getElementById('pf').addEventListener("click", function() {
-	var imj = document.getElementById("ii");
 	var obj = {};
-	obj.img = imj.src;
+	obj.img = fich;
 	obj.icone = b;
 	sender(JSON.stringify(obj), "https://gopiko.fr/api/img.php", null);	
 }, false);
