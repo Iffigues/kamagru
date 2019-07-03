@@ -14,12 +14,13 @@
 	 <div><a class="btn-floating btn-large red pulse" href="/"><i class="material-icons">Kamagru</i></a></div>
 	<?php if(connected()): ?>
 		<div><a class="btn-floating btn-large red pulse" href="?page=profile"><i class="material-icons">Profile</i></a></div>
+		<div><a class="btn-floating btn-large red pulse" href="?page=make"><i class="material-icons">Make</i></a></div>
 		<div><a class="btn-floating btn-large red pulse" href=<?php echo "?page=logout&token=".addToken('logout') ?>><i class="material-icons">Logout</i></a></div>
 	<?php else: ?>
 	<div><a class="btn-floating btn-large red pulse" href="?page=login"><i class="material-icons">Login</i></a></div>
 	<div><a class="btn-floating btn-large red pulse" href="?page=register"><i class="material-icons">Register</i></a></div>
 	<?php endif ?>
-  	<div><a class="btn-floating btn-large red pulse"><i  class="material-icons">Gallerie</i></a></div>  
+  	<div><a class="btn-floating btn-large red pulse" href="?page=galerie"><i class="material-icons">Galerie</i></a></div>  
 	</header>
 	<main>
 		<?= $content ?>

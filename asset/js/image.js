@@ -89,12 +89,16 @@ function take() {
 	img.src = canvas.toDataURL("image/png");
 	fich = img.src;
 	pop.style.display  = "block";
+	myOnlineCamera.style.display = "none";
+	document.getElementById("vv").style.display = "none";
 	vv();
 	imj.src = canvas.toDataURL("image/png");
 }
 
 function binding(event) {
 	if (document.getElementById('nop').style.display != 'none')
+		return ;
+	if (document.getElementById("my_photos").style.display != "none")
 		return ;
 	if (event.key == "=") {
 		c.x = 0;
@@ -244,6 +248,8 @@ document.addEventListener('keydown', (event) => {binding(event)}, false);
 document.getElementById("sf").addEventListener('click',function(){
 	document.getElementById('nop').querySelector('img').src = '';
 	document.getElementById('nop').style.display = 'none';
+	document.getElementById("my").style.display = "block";
+	document.getElementById("vv").style.display = "block";
 	bb();
 },false);
 

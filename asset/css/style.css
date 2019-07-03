@@ -53,7 +53,10 @@ header > div {
 .icone {
 	background-color: black;
 }
-
+.row {
+	margin : 0px!important;
+	padding: 0px!important;
+}
 #top {
 	background-color:orange;
 }

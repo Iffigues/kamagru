@@ -25,7 +25,9 @@ function create_photo($db) {
 		CREATE TABLE IF NOT EXISTS photo(
 			id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 			id_user INT,
+			likes INT DEFAULT 0,
 			path VARCHAR(100) NOT NULL UNIQUE,
+			date DATETIME NOT NULL DEFAULT NOW(),
 			FOREIGN KEY (id_user) REFERENCES user(id)
 			);";
 		$db->exec($photo);
