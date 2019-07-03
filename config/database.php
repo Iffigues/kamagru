@@ -12,7 +12,7 @@ function create_user($db) {
 		active BOOLEAN DEFAULT NULL,
 		password varchar(100) NOT NULL
 	);";
-	$db->exec($user);
+		$db->exec($user);
 	} catch (PDOexception $e) {
 		echo $e->getMessage();
 		return false;
@@ -36,6 +36,24 @@ function create_photo($db) {
 	}
 }
 
+
+function create_mess($db) {
+	try {
+		$photo = "
+		CREATE TABLE IF NOT EXISTS mess(
+			id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+			id_photo INT,
+			mess TEXT CHARACTER SET utf8 NOT NULL,
+			date DATETIME NOT NULL DEFAULT NOW(),
+			FOREIGN KEY (id_photo) REFERENCES photo(id)
+			);";
+		$db->exec($photo);
+	} catch (PDOexception $e) {
+		echo $e->getMessage();
+	}
+}
+
+
 function create_forgot($db) {
 	try {
 		$forgot = "
@@ -57,8 +75,9 @@ try {
 	create_user($dbh);
 	create_forgot($dbh);
 	create_photo($dbh);
+	create_mess($dbh);
 } catch (PDOException $e) {
-	    print "Erreur !: " . $e->getMessage() . "<br/>";
-	        die();
+	print "Erreur !: " . $e->getMessage() . "<br/>";
+	die();
 }
 ?>

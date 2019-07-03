@@ -35,6 +35,8 @@ function convert($e, $b) {
 			$z = take($s);
 			imagecopy($r, $z, $s['x'], $s['y'], 0, 0, $s['width'], $s['height']);
 		}
+	} else {
+		return ;
 	}
 	$path = "./lol/".strval(time()).".png";
 	add_db($path);
