@@ -6,10 +6,28 @@ function xml() {
 		else if (window.ActiveXObject)
 				return (new ActiveXObject("Microsoft.XMLHTTP"));
 }
+
+
+function add(e, x) {
+	var img = document.createElement("IMG");
+	img.src = "./api/"+x['path'];
+	e.append(img);
+}
+
+function create(e) {
+	var gal = document.getElementById('gal');
+	var photo = document.getElementById('photo');
+	if (photo)
+		for (var i = 0; i < photo.length; i++)
+			photo[i].remove();
+	for (var i = 0; i < e.length; i++ )
+		add(gal, e[i]);
+}
+
 function sender (url) {
 		var t = xml();
 		t.onreadystatechange = function(ii,oo,bb) {
-					if (t.readyState > 3 && t.status ==202) {
+					if (t.readyState > 3) {
 						create(JSON.parse(t.responseText));
 			}
 		};
