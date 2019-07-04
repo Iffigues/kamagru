@@ -10,7 +10,8 @@ function create_user($db) {
 		login VARCHAR(50) NOT NULL UNIQUE,
 		cle VARCHAR(32)NOT NULL UNIQUE,
 		active BOOLEAN DEFAULT NULL,
-		password varchar(100) NOT NULL
+		password varchar(100) NOT NULL,
+		accept BOOLEAN DEFAULT 1
 	);";
 		$db->exec($user);
 	} catch (PDOexception $e) {
@@ -43,6 +44,7 @@ function create_mess($db) {
 		CREATE TABLE IF NOT EXISTS mess(
 			id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 			id_photo INT,
+			author varchar(100) NOT NULL,
 			mess TEXT CHARACTER SET utf8 NOT NULL,
 			date DATETIME NOT NULL DEFAULT NOW(),
 			FOREIGN KEY (id_photo) REFERENCES photo(id)
