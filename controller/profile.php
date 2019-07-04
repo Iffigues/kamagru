@@ -29,6 +29,13 @@ function request($b, $c, $d) {
 	}
 }
 
+function is($e) {
+	if ($e) {
+		return (1);
+	}
+	return (0);
+}
+
 if ($_SESSION['co']) {
 	if (isset($_GET['action']) && !empty($_GET['action'])) {
 		$a = $_GET["action"];
@@ -38,6 +45,8 @@ if ($_SESSION['co']) {
 			changeme(conn_db(), "UPDATE user SET email = :login WHERE login like :haha", $_POST['email1'], $_SESSION['login']);
 		if ($a == "login")
 			changeme(conn_db(), "UPDATE user SET login = :login WHERE login like :haha", $_POST['login1'], $_POST['login']);
+		if ($a == "accept")
+			changeme(conn_db(),"UPDATE user SET accept = :login WHERE login like :haha", is($_POST['accept']), $_SESSION['login']);
 	}
 	require_once("./template/profile.php");
 }

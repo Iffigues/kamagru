@@ -13,8 +13,9 @@
 <?php endif; ?>
 <div class="row" id="haha">
 	<?php foreach($a[1] as $pd): ?>
-	<div class="row"><center><p>Auteur : <?php echo $pd['author']; ?>,    posted: <?php echo $pd['date']; ?></p></center></div>
-		<div class="row"><p><?php echo $pd['mess']; ?></p></div>
+	<?php $pseudo = htmlspecialchars($pd['author']); $pp = htmlspecialchars($pd['mess']); ?>
+	<div class="row"><center><p>Auteur : <?php echo $pseudo; ?>,    posted: <?php echo $pd['date']; ?></p></center></div>
+		<div class="row"><p><?php echo $pp; ?></p></div>
 	<?php endforeach; ?>
 </div>
 </div>

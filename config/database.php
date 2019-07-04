@@ -11,7 +11,7 @@ function create_user($db) {
 		cle VARCHAR(32)NOT NULL UNIQUE,
 		active BOOLEAN DEFAULT NULL,
 		password varchar(100) NOT NULL,
-		accept BOOLEAN DEFAULT 1
+		accept BOOLEAN DEFAULT TRUE
 	);";
 		$db->exec($user);
 	} catch (PDOexception $e) {
