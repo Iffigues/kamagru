@@ -6,13 +6,21 @@ function xml() {
 		return (new ActiveXObject("Microsoft.XMLHTTP"));
 }
 
+function send(url) {
+	var t = xml();
+	t.onreadystatechange = function(ii,oo,bb) {
+		if (t.readyState > 3)
+			location.reload();
+	};
+	t.open("POST", url, true);
+	t.send();
+}
+
 function sender (url, g) {
 	var t = xml();
-	console.log(g);
 	t.onreadystatechange = function(ii,oo,bb) {
 		if (t.readyState > 3) {
 			location.reload();
-			console.log(t.responseText);
 		}
 	};
 	t.open("POST", url, true);
@@ -25,4 +33,14 @@ document.getElementById("me").addEventListener("click", function () {
 	var text = x.value;
 	sender("https://gopiko.fr/api/mess.php?id="+c, JSON.stringify(text));
 	x.value = "";
+});
+
+if (document.getElementById("like"))
+document.getElementById("like").addEventListener('click', function () {
+	send("https://gopiko.fr/api/like.php?action=like&id="+c);
+});
+
+if (document.getElementById("dislike"))
+document.getElementById("dislike").addEventListener('click', function() {
+	send("https://gopiko.fr/api/like.php?action=dislike&id="+c);
 });

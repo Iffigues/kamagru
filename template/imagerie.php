@@ -1,8 +1,15 @@
 <?php require_once("./template/func/galerie.php"); $a = getimg($_GET['id']); ?>
+<?php require_once("./template/func/like.php"); $t = like($_GET['id']);?>
 <div class="container">
 	<div class="row">
 		<img class="col s12"  id=<?php echo $a[0]['id'];?> src=<?php echo "./api/".$a[0]['path'] ?>></img>
-		<center class="col s12"><p>I like it</p></center>
+		<?php if(isset($_SESSION['co']) && $_SESSION['co']): ?>
+			<?php if (!$t): ?>
+				<center class="col s12"><p id="like">I like it</p></center>
+			<?php else: ?>
+				<center class="col s12"><p id="dislike">Dislike</p></center>
+			<?php endif ?>
+		<?php  endif ?>
 	<div>
 <?php if(isset($_SESSION['co']) && $_SESSION['co']): ?>
 <div class="row">

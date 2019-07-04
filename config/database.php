@@ -37,6 +37,21 @@ function create_photo($db) {
 	}
 }
 
+function create_like($db) {
+	try {
+		$user = "
+		CREATE TABLE IF NOT EXISTS likes(
+			id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+			id_photo INT NOT NULL,
+			user int NOT NULL,
+			FOREIGN KEY (id_photo) REFERENCES photo(id)
+	);";
+		$db->exec($user);
+	} catch (PDOexception $e) {
+		echo $e->getMessage();
+		return false;
+	}
+}
 
 function create_mess($db) {
 	try {
@@ -78,6 +93,7 @@ try {
 	create_forgot($dbh);
 	create_photo($dbh);
 	create_mess($dbh);
+	create_like($dbh);
 } catch (PDOException $e) {
 	print "Erreur !: " . $e->getMessage() . "<br/>";
 	die();
