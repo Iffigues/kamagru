@@ -257,5 +257,6 @@ document.getElementById('pf').addEventListener("click", function() {
 	var obj = {};
 	obj.img = fich;
 	obj.icone = b;
-	sender(JSON.stringify(obj), "https://gopiko.fr/api/img.php", null);	
+	var c = bb;
+	sender(JSON.stringify(obj), "https://gopiko.fr/api/img.php", c);	
 }, false);

@@ -5,13 +5,20 @@ function xml() {
 		return (new ActiveXObject("Microsoft.XMLHTTP"));
 }
 
-function sender (e, url, b) {
+function sender (e, url, bb) {
 	var t = xml();
-	t.onreadystatechange = function(ii,oo,bb) {
+	document.getElementById("pf").style.display = "none";
+	document.getElementById("sf").style.display = "none";
+	t.onreadystatechange = function(ii) {
 		if (t.readyState>3 /*$&& t.status==204*/) {
-			console.log(t.status);
-			console.log(t.responseText);
 		}
+		document.getElementById("sf").style.display = "block";
+		document.getElementById("pf").style.display = "block";
+		document.getElementById('nop').querySelector('img').src = '';
+		document.getElementById('nop').style.display = 'none';
+		document.getElementById("my").style.display = "block";
+		document.getElementById("vv").style.display = "block";
+		bb();
 	};
 	t.open("POST", url, true);
 	t.setRequestHeader("Content-Type", "application/json");
