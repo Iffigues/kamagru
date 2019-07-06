@@ -37,7 +37,7 @@ function is($e) {
 }
 
 if ($_SESSION['co']) {
-	if (isset($_GET['action']) && !empty($_GET['action'])) {
+	if (isset($_GET['action']) && !empty($_GET['action']) && getToken('action')) {
 		$a = $_GET["action"];
 		if ($a == "pwd")
 			request($_POST['pwd'], $_POST['pwd1'], $_POST['pwd2']);
