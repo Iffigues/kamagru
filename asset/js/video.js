@@ -19,31 +19,17 @@
 		audio: false 
 	};
 	const video = document.querySelector('video');
-	navigator.mediaDevices.getUserMedia(constraints).
-		then((stream) => {video.srcObject = stream});
+	navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream}).catch(error => {});
 	const videoElement = document.querySelector('video');
-	//const audioSelect = document.querySelector('video');
-	//const videoSelect = document.querySelector('video');
-	navigator.mediaDevices.enumerateDevices()
-		.then(gotDevices).then(getStream).catch(handleError);
-	//audioSelect.onchange = getStream;
-	//videoSelect.onchange = getStream;
+	navigator.mediaDevices.enumerateDevices().then(gotDevices).then(getStream).catch(handleError);
 	function gotDevices(deviceInfos) {
 		for (let i = 0; i !== deviceInfos.length; ++i) {
 			const deviceInfo = deviceInfos[i];
 			const option = document.createElement('option');
 			option.value = deviceInfo.deviceId;
 			if (deviceInfo.kind === 'audioinput') {
-				/*option.text = deviceInfo.label ||
-					'microphone ' + (audioSelect.length + 1);
-				audioSelect.appendChild(option);*/
 			} else if (deviceInfo.kind === 'videoinput') {
-				//option.text = deviceInfo.label || 'camera ' +
-				//	(videoSelect.length + 1);
-				//videoSelect.appendChild(option);
-			} else {
-				//console.log('Found another kind of device: ', deviceInfo);
-			}
+			} else {}
 		}
 	}
 	function getStream() {
@@ -53,22 +39,15 @@
 			});
 		}
 		const constraints = {
-			//audio: {
-				//deviceId: {exact: audioSelect.value}
-			//},
-			video: {
-				//deviceId: {exact: videoSelect.value}
-			}
+			video: {}
 		};
 		navigator.mediaDevices.getUserMedia(constraints).
 			then(gotStream).catch(handleError);
 	}
 	function gotStream(stream) {
-		window.stream = stream; // make stream available to console
+		window.stream = stream;
 		videoElement.srcObject = stream;
 	}
-	function handleError(error) {
-		console.error('Error: ', error);
-	}
+	function handleError(error) {}
 })();
 

@@ -223,6 +223,7 @@ function pic() {
 		imgs.src = reader.result;
 		canvas.width = imgs.width;
 		canvas.height = imgs.height;
+		b = [];
 		bb();
 	}
 }
@@ -238,6 +239,7 @@ function elf() {
 	canvas.width = video.videoWidth;
 	canvas.height = video.videoHeight;
 	document.getElementById("load").value = "";
+	b = [];
 	bb();
 }
 
