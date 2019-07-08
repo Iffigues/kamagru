@@ -2,6 +2,7 @@
 
 require_once("./template/func/csrf.php");
 require_once("./config/db.php");
+require_once("./templqte/func/email.php");
 
 function epimail($mail, $login, $cle) {
 	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail))
@@ -58,7 +59,7 @@ if (!isset($_SESSION['co']) || !$_SESSION['co']) {
 	if ($_SERVER['REQUEST_METHOD'] == "GET") 
 		require_once("./template/forgot.php");
 	if ($_SERVER['REQUEST_METHOD'] == "POST") {
-		if (getToken("forgot")) {
+		if (getToken("forgot") && verif_email($_POST['mail'])) {
 			$db = conn_db();
 			try {
 				$stmt = $db->prepare("SELECT email, login  FROM user WHERE email = :mail LIMIT 1");
