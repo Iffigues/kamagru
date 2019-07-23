@@ -1,11 +1,11 @@
 <?php require_once('./template/func/carous.php'); ?>
-<div class="">
+<div class="container">
 	<device type="media" onchange="update(this.data)"></device>
 	<div class="row" id="my_photos" style="margin:0px; overflow-x:scroll;display:none; position:absolute">
 		<?php $e = carous(); ?>
 		<?php foreach ($e as $z): ?>
-			<div style="display:inline"><img src=<?php echo "./api/".$z['path']; ?> style="width:220px"></img></div>
-		<?php endforeach  ?>
+				<a href=<?php echo "?page=del&id=".$z['id'] ?>><div style="display:inline"><img src=<?php echo "./api/".$z['path']; ?>  style="width:220px"></img></div></a>
+	<?php endforeach  ?>
 		<div class="row"><button class="col s12" id="close">fermer</button></div>
 	</div>
 	<div class="row" >
@@ -66,3 +66,4 @@
 <script type="text/javascript" src="./asset/js/video.js"></script>
 <script type="text/javascript" src="./asset/js/scale.js"></script>
 <script type="text/javascript" src="./asset/js/carous.js"></script>
+

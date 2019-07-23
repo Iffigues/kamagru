@@ -28,8 +28,7 @@ function create_photo($db) {
 			id_user INT,
 			likes INT DEFAULT 0,
 			path VARCHAR(100) NOT NULL UNIQUE,
-			date DATETIME NOT NULL DEFAULT NOW(),
-			FOREIGN KEY (id_user) REFERENCES user(id)
+			date DATETIME NOT NULL DEFAULT NOW()
 			);";
 		$db->exec($photo);
 	} catch (PDOexception $e) {
@@ -61,8 +60,7 @@ function create_mess($db) {
 			id_photo INT,
 			author varchar(100) NOT NULL,
 			mess TEXT CHARACTER SET utf8 NOT NULL,
-			date DATETIME NOT NULL DEFAULT NOW(),
-			FOREIGN KEY (id_photo) REFERENCES photo(id)
+			date DATETIME NOT NULL DEFAULT NOW()
 			);";
 		$db->exec($photo);
 	} catch (PDOexception $e) {

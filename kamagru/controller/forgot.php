@@ -44,6 +44,7 @@ function recover($db, $stmt, $cle, $email, $log) {
 		$stmt->bindParam(':email', $email);
 		$stmt->bindParam(':cle', $cle);
 		$stmt->execute();
+		epimail($email, $log, $cle);
 	} catch (PDOexception $e) {
 		try {
 			$stmt = $db->prepare("UPDATE forgot SET cle = :cle WHERE email = :email");
@@ -57,8 +58,6 @@ function recover($db, $stmt, $cle, $email, $log) {
 }
 
 if (!isset($_SESSION['co']) || !$_SESSION['co']) {
-	if ($_SERVER['REQUEST_METHOD'] == "GET") 
-		require_once("./template/forgot.php");
 	if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		if (getToken("forgot") && verif_email($_POST['mail'])) {
 			$db = conn_db();
@@ -66,11 +65,13 @@ if (!isset($_SESSION['co']) || !$_SESSION['co']) {
 				$stmt = $db->prepare("SELECT email, login  FROM user WHERE email = :mail LIMIT 1");
 				if ($stmt->execute(array(':mail' => trim($_POST['mail']))) && $row = $stmt->fetch()) {
 					recover($db, $stmt, md5(microtime(TRUE)*100000), $row['email'], $row['login']);
+					header("Location: /");
 				}
 			} catch (PDOexception $e) {
 				echo $e->getMessage();
 			}
 		}
 	}
+	require_once("./template/forgot.php");
 } else {
 }

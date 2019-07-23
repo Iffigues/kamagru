@@ -75,6 +75,8 @@ function del() {
 }
 
 function take() {
+	if (b.length < 1)
+		return ;
 	var img = new Image();
 	var imj = document.getElementById("ii");
 	var	myOnlineCamera	= document.getElementById('my'),
@@ -88,6 +90,7 @@ function take() {
 	else
 		context.drawImage(video,0,0);
 	img.src = canvas.toDataURL("image/png");
+	console.log(img.src);
 	fich = img.src;
 	pop.style.display  = "block";
 	myOnlineCamera.style.display = "none";
@@ -226,13 +229,19 @@ function notw(reader) {
 	bb();
 }
 
+function isImg(file) {
+	const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png']; 
+	return file && acceptedImageTypes.includes(file['type'])
+}
+
 function pic(l) {
 	var canvas = document.getElementById("canvas");
 	var reader = new FileReader();
 	reader.readAsDataURL(l.files[0]);
-	reader.onload = function(event){
-		notw(reader);
-	}
+	if (isImg(l.files[0]))
+		reader.onload = function(event) {
+			notw(reader);
+		}
 }
 
 function elf() {
@@ -264,7 +273,6 @@ document.getElementById("sf").addEventListener('click',function(){
 },false);
 
 document.getElementById('js').addEventListener('click', function() {
-	if (b.length > 0)
 		take();
 }, false);
 
@@ -274,4 +282,6 @@ document.getElementById('pf').addEventListener("click", function() {
 	obj.icone = b;
 	var c = bb;
 	sender(JSON.stringify(obj), "/api/img.php", c);	
+	b = [];
+	document.getElementById("elem").innerHTML = "";
 }, false);

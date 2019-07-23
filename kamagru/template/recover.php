@@ -1,8 +1,8 @@
 <?php if (!isset($_SESSION['co']) || !$_SESSION['co']): ?>
-<?php if ($_SERVER['REQUEST_METHOD'] == "GET"): ?>
+<?php if ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST"): ?>
 <section>
 	<div class="row">
-    <form class="col s12" action="?page=recover" method="POST">
+	<form class="col s12" action=<?php echo "?page=recover&log=".$_GET['log'] ?> method="POST">
 	<input name="cle" style="display:none;" type="text" value=<?php echo $_GET['cle']; ?>>
       <div class="row">
         <div class="input-field col s12">

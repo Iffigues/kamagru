@@ -12,7 +12,7 @@ if (!isset($_SESSION['co']) || !$_SESSION["co"]){
 		$pwd = $_POST["pwd"];
 		try {
 			if (getToken('login')) {
-				$stmt = $db->prepare("SELECT *  FROM user WHERE email like :mail LIMIT 1");
+				$stmt = $db->prepare("SELECT *  FROM user WHERE login like :mail LIMIT 1");
 				$stmt->execute(array(':mail' => $mail));
 				$row = $stmt->fetch();
 				if ($row) {

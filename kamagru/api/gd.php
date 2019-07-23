@@ -29,7 +29,8 @@ function convert($e, $b) {
 	$size = [];
 	$data = explode(',',$e);
 	try {
-		$r = imagecreatefromstring(base64_decode($data[1]));
+		if (!$r = @imagecreatefromstring(base64_decode($data[1])))
+			return ;
 	}catch (Exception $e) {
     	return ;
 	}

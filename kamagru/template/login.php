@@ -7,7 +7,7 @@
 	<input name="token" style="display:none;" type="text" value=<?php echo $t; ?>>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" name="mail" class="validate">
+          <input id="email" type="text" name="mail" class="validate">
         </div>
       </div>
 	<div class="row">

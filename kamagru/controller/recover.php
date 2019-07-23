@@ -2,6 +2,7 @@
 
 require_once('./config/db.php');
 require_once('./template/func/passwd.php');
+require_once('./template/func/email.php');
 
 function erase($db, $m) {
 	try {
@@ -14,7 +15,7 @@ function erase($db, $m) {
 
 function record($a, $b, $c) {
 	$db = conn_db();
-	if ($a == $b) {
+	if (($a == $b) && verif_password($a)) {
 		try {
 			$rrr = pwd($a);
 			$stmt = $db->prepare("UPDATE user SET password = :pwd WHERE email like :email");
@@ -46,12 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['cle']) && is_recover($_G
 	require_once('./template/recover.php');
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$cle = $_POST['cle'];
+	$rrr = $_GET['log'];
 	$pwd = $_POST['password'];
 	$pwd1 = $_POST['pwd'];
 	if ($cle && $mail = is_recover($cle)) {
 		if (record($pwd, $pwd1, $mail))
 			require_once("./template/login.php");
 		else
-			require_once("./template/recover.php");
+			 header("Location: ./?page=recover&log=$rrr&cle=$cle");
 	}
 }

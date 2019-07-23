@@ -3,7 +3,7 @@
 require_once('./template/func/error.php');
 
 function verif_password($password) {
-	if (strlen($password < 8))
+	if (strlen($password) < 8)
 		return (0);
 	return (1);
 }
@@ -26,6 +26,9 @@ function check_out($e) {
 	if (!verif_email($e[3])) {
 		setError("register", "mail non valide");
 		return 0;
+	}
+	if(strlen($e[0]) < 3) {
+		return (0);
 	}
 	return 1;
 }
